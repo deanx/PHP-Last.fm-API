@@ -6,18 +6,10 @@
         "api",
         "webservice client"
     ],
-    "homepage": "https://github.com/matto1990/PHP-Last.fm-API",
+    "homepage": "https://github.com/deanx/PHP-Last.fm-API",
     "type": "library",
     "license": "MIT",
     "authors": [
-        {
-            "name": "Matt",
-            "email": "matt@oakes.ws"
-        },
-        {
-            "name": "Marcos",
-            "email": "devilcius@gmail.com"
-        },
         {
             "name": "Alex",
             "email": "alex@deanx.com.br"
