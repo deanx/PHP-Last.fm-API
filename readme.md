@@ -5,7 +5,7 @@ Thank you for using PHP Last.FM API!
 You will need your own API key by registering at: http://www.last.fm/api
 
 # Installation
-`composer require matto1990/lastfm-api`
+`composer require deanx/lastfm-api`
 
 # Usage
 _:exclamation: Only read calls are tested (2016-03-17)_
