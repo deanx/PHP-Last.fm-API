@@ -27,7 +27,7 @@ class GeoApi extends BaseApi
             if ($call = $this->apiGetCall($vars)) {
                 $events['location'] = (string) $call->events['location'];
                 $events['currentPage'] = (string) $call->events['page'];
-                $events['totalPages'] = (string) $call->events['totalpages'];
+                  $events['totalPages'] = (string) $call->events['totalpages'];
                 $events['totalResults'] = (string) $call->events['total'];
                 $i = 0;
                 foreach ($call->events->event as $event) {
@@ -86,6 +86,9 @@ class GeoApi extends BaseApi
 
             if ($call = $this->apiGetCall($vars)) {
                 $i = 0;
+
+                $topArtists['attributes'] = $this->getRetultAttributes($call->topartists);
+
                 foreach ($call->topartists->artist as $artist) {
                     $topArtists[$i]['name'] = (string) $artist->name;
                     $topArtists[$i]['rank'] = (string) $artist['rank'];
@@ -110,6 +113,21 @@ class GeoApi extends BaseApi
         }
     }
 
+    /**
+     * Get the attributes from the result. country, page, perPage, totalPages, total
+     * @param array $result An array with the search result
+     * @return array
+     */
+    private function getRetultAttributes($result) {
+      $entries = get_object_vars($result);
+
+      while($element = current($entries)) {
+        if(key($entries) === '@attributes') {
+          return $element;
+        }
+        next($entries);
+      }
+    }
     /**
      * Get the most popular tracks on Last.fm last week by country
      * @param array $methodVars An array with the following required values: <i>country</i> and optional value: <i>limit</i>, <i>location</i>, <i>page</i>
