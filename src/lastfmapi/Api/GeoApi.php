@@ -27,7 +27,7 @@ class GeoApi extends BaseApi
             if ($call = $this->apiGetCall($vars)) {
                 $events['location'] = (string) $call->events['location'];
                 $events['currentPage'] = (string) $call->events['page'];
-                  $events['totalPages'] = (string) $call->events['totalpages'];
+                $events['totalPages'] = (string) $call->events['totalpages'];
                 $events['totalResults'] = (string) $call->events['total'];
                 $i = 0;
                 foreach ($call->events->event as $event) {
@@ -85,10 +85,8 @@ class GeoApi extends BaseApi
             $vars = array_merge($vars, $methodVars);
 
             if ($call = $this->apiGetCall($vars)) {
-                $i = 0;
-
                 $topArtists['attributes'] = $this->getRetultAttributes($call->topartists);
-
+                $i = 0;
                 foreach ($call->topartists->artist as $artist) {
                     $topArtists[$i]['name'] = (string) $artist->name;
                     $topArtists[$i]['rank'] = (string) $artist['rank'];
@@ -120,7 +118,6 @@ class GeoApi extends BaseApi
      */
     private function getRetultAttributes($result) {
       $entries = get_object_vars($result);
-
       while($element = current($entries)) {
         if(key($entries) === '@attributes') {
           return $element;
